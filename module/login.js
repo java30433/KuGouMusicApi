@@ -25,7 +25,7 @@ module.exports = (params, useAxios) => {
       headers: { 'x-router': 'login.user.kugou.com' },
     }).then(rawRes => {
       const res = {
-        ...res,
+        ...rawRes,
         __debug_request: dataMap,
       };
       const { body } = res;
