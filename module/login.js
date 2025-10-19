@@ -25,6 +25,7 @@ module.exports = (params, useAxios) => {
       headers: { 'x-router': 'login.user.kugou.com' },
     }).then(res => {
       const { body } = res;
+      res.request = dataMap;
       if (body?.status && body?.status === 1) {
         if (body?.data?.secu_params) {
           const getToken = cryptoAesDecrypt(body.data.secu_params, encrypt.key);
