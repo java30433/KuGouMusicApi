@@ -28,7 +28,7 @@ module.exports = (params, useAxios) => {
         ...res,
         __debug_request: dataMap,
       };
-      const { body } = debugRes;
+      const { body } = res;
       if (body?.status && body?.status === 1) {
         if (body?.data?.secu_params) {
           const getToken = cryptoAesDecrypt(body.data.secu_params, encrypt.key);
