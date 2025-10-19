@@ -23,9 +23,12 @@ module.exports = (params, useAxios) => {
       encryptType: 'android',
       cookie: params?.cookie || {},
       headers: { 'x-router': 'login.user.kugou.com' },
-    }).then(res => {
-      res.request = dataMap;
-      const { body } = res;
+    }).then(rawRes => {
+      const debugRes = {
+        ...res,
+        __debug_request: dataMap,
+      };
+      const { body } = debugRes;
       if (body?.status && body?.status === 1) {
         if (body?.data?.secu_params) {
           const getToken = cryptoAesDecrypt(body.data.secu_params, encrypt.key);
