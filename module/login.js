@@ -24,7 +24,7 @@ module.exports = (params, useAxios) => {
       cookie: params?.cookie || {},
       headers: { 'x-router': 'login.user.kugou.com' },
     }).then(rawRes => {
-      const debugRes = {
+      const res = {
         ...res,
         __debug_request: dataMap,
       };
